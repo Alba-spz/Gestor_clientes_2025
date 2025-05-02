@@ -8,7 +8,11 @@ class Cliente:
         return f"({self.dni}) {self.nombre} {self.apellido}"
     
 class Clientes:
-    lista=[]
+    lista=[
+        Cliente('18L', 'Hugo', 'González'),
+        Cliente('23H', 'Víctor', 'Laso'),
+        Cliente('44F', 'Julia', 'Pozo')
+    ]
 
     @staticmethod
     def buscar(dni):
