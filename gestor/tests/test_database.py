@@ -1,6 +1,7 @@
 import copy
 import unittest
 import database as db
+import helpers
 
 class TestDatabase(unittest.TestCase):
 
@@ -34,6 +35,13 @@ class TestDatabase(unittest.TestCase):
         cliente_borrado = db.Clientes.borrar('23H')
         cliente_rebuscado = db.Clientes.buscar('23H')
         self.assertNotEqual(cliente_borrado, cliente_rebuscado)
+    
+    def test_dni_valido(self):
+        self.assertTrue(helpers.dni_valido('00A', db.Clientes.lista))       # válido
+        self.assertFalse(helpers.dni_valido('23223S', db.Clientes.lista))   # demasiado largo
+        self.assertFalse(helpers.dni_valido('F35', db.Clientes.lista))      # formato incorrecto
+        self.assertFalse(helpers.dni_valido('18L', db.Clientes.lista))      # ya existe
+
 
 if __name__ == '__main__':
     unittest.main()
