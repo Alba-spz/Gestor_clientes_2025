@@ -1,5 +1,7 @@
 import csv
 import config
+import os
+
 class Cliente:
     def __init__(self, dni, nombre, apellido):
         self.dni = dni
@@ -11,11 +13,19 @@ class Cliente:
     
 class Clientes:
     lista=[]
+
+    # Asegurar que el archivo existe antes de intentar leerlo
+    if not os.path.exists(config.DATABASE_PATH):
+        with open(config.DATABASE_PATH, "w", newline="\n") as fichero:
+            pass  # Crear archivo vacío
+    
     with open(config.DATABASE_PATH, newline="\n") as fichero:
         reader = csv.reader(fichero, delimiter=";")
-        for dni, nombre, apellido in reader:
-            cliente = Cliente(dni, nombre, apellido)
-            lista.append(cliente)
+        for fila in reader:
+            if len(fila) == 3:
+                dni, nombre, apellido = fila
+                cliente = Cliente(dni, nombre, apellido)
+                lista.append(cliente)
 
     @staticmethod
     def buscar(dni):

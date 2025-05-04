@@ -144,7 +144,7 @@ class CreateClientWindow(Toplevel, CenterWidgetMixin):
         )
         event.widget.configure({"bg": "Green" if valido else "Red"})
         self.validaciones[index] = 1 if valido else 0
-        self.crear.config(state=NORMAL if self.validaciones == [1, 1, 1] else DISABLED)
+        self.crear_button.config(state=NORMAL if self.validaciones == [1, 1, 1] else DISABLED)
 
     def create_client(self):
         self.master.treeview.insert(
