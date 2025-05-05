@@ -3,11 +3,14 @@ import menu
 import ui
 
 if __name__ == "__main__":
-    # Si pasamos un argumento -t lanzamos el modo terminal
+    # Comprueba si se pasa un argumento -t para lanzar el modo terminal
     if len(sys.argv) > 1 and sys.argv[1] == "-t":
+        # Inicia el modo terminal
         menu.iniciar()
-    # En cualquier otro caso lanzamos el modo gráfico
+    # Lanza el modo gráfico en cualquier otro caso
     else:
+        # Crea una instancia de la ventana principal de la interfaz gráfica
         app = ui.MainWindow()
+        # Ejecuta el bucle principal de la aplicación gráfica
         app.mainloop()
 
