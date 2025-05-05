@@ -37,7 +37,15 @@ def iniciar():
                 if helpers.dni_valido(dni, db.Clientes.lista):
                     break
             nombre = helpers.leer_texto(2, 30, "Nombre (2-30 caracteres)").capitalize()
+            while True:
+                if helpers.nombre_valido(nombre):
+                    break
+                print("Nombre inválido. Solo letras y entre 2 y 30 caracteres.")
             apellido = helpers.leer_texto(2, 30, "Apellido (2-30 caracteres)").capitalize()
+            while True:
+                if helpers.apellido_valido(apellido):
+                    break
+                print("Apellido inválido. Solo letras y entre 2 y 30 caracteres.")
             db.Clientes.crear(dni, nombre, apellido)
             print("Cliente añadido correctamente.")
 

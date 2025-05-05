@@ -29,3 +29,8 @@ def dni_valido(dni, lista_clientes):
 
     return True
 
+def nombre_valido(nombre):
+    return nombre.isalpha() and 2 <= len(nombre) <= 30
+
+def apellido_valido(apellido):
+    return apellido.isalpha() and 2 <= len(apellido) <= 30
